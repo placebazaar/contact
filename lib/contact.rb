@@ -14,18 +14,31 @@ error BadRequest do |error|
   status 400
 end
 
-def json_params
-  # Coerce this into a symbolised Hash so Sintra data structures
-  # don't leak into the command layer.
-  Hash[
-    params.merge(
-      JSON.parse(request.body.read)
-    ).map { |k, v| [k.to_sym, v] }
-  ]
+post '/messages' do
+  validate(params)
+  raise BadRequest, errors.join("\n") if errors.any?
+
+  @name    = params['name']
+  @email   = params['email']
+  @message = params['message']
+
+  Pony.mail(to: Contact.config.mail_to,
+            from: Contact.config.mail_from,
+            reply_to: @email,
+            body: erb(:mail_text))
+  status 201
 end
 
-post '/message' do
-  status 201
+def validate(params)
+  { email: 255, name: 255, message: 1000 }.each do |field, length|
+    errors << "#{field} cannot be over #{length} characters" if
+                                        params[field.to_s].to_s.length > length
+    errors << "#{field} cannot be empty" if params[field].to_s.empty?
+  end
+end
+
+def errors
+  @errors ||= []
 end
 
 ## Core namespace for the app
