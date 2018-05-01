@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require 'minitest/assert_changes'
 require 'byebug'
 
 require 'contact'
