@@ -17,6 +17,7 @@ describe 'add message through REST' do
         assert_equal %w[webmaster@example.com], last_mail.to
         assert_equal %w[contact@placebazaar.org], last_mail.from
         assert_equal %w[harry@hogwards.edu.wizard], last_mail.reply_to
+        assert_equal '[Contactform PlaceBazaar] Harry Potter', last_mail.subject
         assert_includes last_mail.body.to_s, 'Wingardium Leviosar'
         assert_includes last_mail.body.to_s, 'name: Harry Potter'
         assert_includes last_mail.body.to_s, 'email: harry@hogwards.edu.wizard'
