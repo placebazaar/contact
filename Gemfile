@@ -9,6 +9,7 @@ gem 'sinatra'
 
 group :development, :test do
   gem 'minitest'
+  gem 'minitest-assert_changes'
   gem 'rack-test'
 
   gem 'rubocop'

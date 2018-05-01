@@ -13,4 +13,8 @@ module RequestHelpers
     defaults = { 'Content-Type' => 'application/json' }
     post url, body.to_json, headers.merge(defaults)
   end
+
+  def assert_response(code)
+    assert_equal code, last_response.status
+  end
 end

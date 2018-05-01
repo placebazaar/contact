@@ -15,6 +15,8 @@ GEM
       mini_mime (>= 0.1.1)
     mini_mime (1.0.0)
     minitest (5.11.3)
+    minitest-assert_changes (1.0.0)
+      minitest
     mustermann (1.0.2)
     parallel (1.12.1)
     parser (2.5.1.0)
@@ -59,6 +61,7 @@ DEPENDENCIES
   byebug
   foreman
   minitest
+  minitest-assert_changes
   pony
   rack-test
   rerun
