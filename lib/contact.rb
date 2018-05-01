@@ -22,10 +22,7 @@ post '/messages' do
   @email   = params['email']
   @message = params['message']
 
-  Pony.mail(to: Contact.config.mail_to,
-            from: Contact.config.mail_from,
-            reply_to: @email,
-            body: erb(:mail_text))
+  Pony.mail(reply_to: @email, body: erb(:mail_text))
   status 201
 end
 
@@ -62,3 +59,10 @@ module Contact
 end
 
 require_relative '../config/environment.rb'
+
+Pony.options = {
+  to: Contact.config.mail_to,
+  from: Contact.config.mail_from,
+  via: :smtp,
+  via_options: Contact.config.smtp_options
+}
