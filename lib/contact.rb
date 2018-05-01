@@ -22,7 +22,9 @@ post '/messages' do
   @email   = params['email']
   @message = params['message']
 
-  Pony.mail(reply_to: @email, body: erb(:mail_text))
+  Pony.mail(reply_to: @email,
+            subject: "[Contactform PlaceBazaar] #{@name}",
+            body: erb(:mail_text))
   status 201
 end
 
