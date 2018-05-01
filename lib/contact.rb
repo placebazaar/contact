@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'pony'
 
 UnprocessableEntity = Class.new(StandardError)
 BadRequest = Class.new(StandardError)
@@ -31,6 +32,7 @@ end
 module Contact
   ## Holds the configuration, singleton with a class variable.
   class Config
+    attr_accessor :mail_to, :mail_from, :smtp_options
   end
 
   def self.config
@@ -43,27 +45,6 @@ module Contact
 
   def self.environment
     ENV.fetch('RACK_ENV', 'development')
-  end
-
-  ##
-  # Deliver contact to this email, or list of emails.
-  def self.mail_to
-    EventSourcery::Postgres.config.mail_to
-  end
-
-  ##
-  # Pony +via_options+ for SMTP server delivery
-  # :address              => 'smtp.gmail.com',
-  # :port                 => '587',
-  # :enable_starttls_auto => true,
-  # :user_name            => 'user',
-  # :password             => 'password_see_note',
-  # :authentication       => :plain, # :plain, :login, :cram_md5, no auth
-  #                          by default
-  # :domain               => "localhost.localdomain" # the HELO domain
-  #                          provided by the client to the server
-  def self.smtp_options
-    EventSourcery::Postgres.config.event_options
   end
 end
 
