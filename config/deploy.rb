@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.10.2"
 
-set :application, "my_app_name"
+set :application, "placebazaar_contact"
 set :repo_url, "git@github.com:placebazaar/contact.git"
 
 # Default branch is :master
