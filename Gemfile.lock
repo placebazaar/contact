@@ -43,6 +43,7 @@ GEM
     pony (1.12)
       mail (>= 2.0)
     powerpack (0.1.1)
+    puma (3.11.4)
     rack (2.0.5)
     rack-protection (2.0.1)
       rack
@@ -88,6 +89,7 @@ DEPENDENCIES
   minitest
   minitest-assert_changes
   pony
+  puma
   rack-test
   rerun
   rubocop
