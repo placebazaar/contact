@@ -23,6 +23,7 @@ GEM
       thor (~> 0.19.1)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    kgio (2.11.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -43,13 +44,13 @@ GEM
     pony (1.12)
       mail (>= 2.0)
     powerpack (0.1.1)
-    puma (3.11.4)
     rack (2.0.5)
     rack-protection (2.0.1)
       rack
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rainbow (3.0.0)
+    raindrops (0.19.0)
     rake (12.3.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
@@ -76,6 +77,9 @@ GEM
     thor (0.19.4)
     tilt (2.0.8)
     unicode-display_width (1.3.2)
+    unicorn (5.4.0)
+      kgio (~> 2.6)
+      raindrops (~> 0.7)
 
 PLATFORMS
   ruby
@@ -89,11 +93,11 @@ DEPENDENCIES
   minitest
   minitest-assert_changes
   pony
-  puma
   rack-test
   rerun
   rubocop
   sinatra
+  unicorn
 
 BUNDLED WITH
    1.16.1
