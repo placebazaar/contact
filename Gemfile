@@ -4,11 +4,13 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
+gem 'foreman'
 gem 'pony'
 gem 'sinatra'
 
 group :development do
   gem 'capistrano'
+  gem 'capistrano-foreman'
 end
 
 group :development, :test do
@@ -21,6 +23,5 @@ group :development, :test do
   gem 'awesome_print'
   gem 'byebug'
 
-  gem 'foreman'
   gem 'rerun'
 end
