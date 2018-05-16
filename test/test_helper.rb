@@ -25,6 +25,7 @@ module Minitest
 
     before do
       Pony.override_options = { via: :test }
+      Mail::TestMailer.deliveries.clear
     end
   end
 end

@@ -25,7 +25,12 @@ post '/messages' do
   Pony.mail(reply_to: @email,
             subject: "[Contactform PlaceBazaar] #{@name}",
             body: erb(:mail_text))
-  status 201
+
+  if params['return']
+    redirect params['return']
+  else
+    status 201
+  end
 end
 
 def validate(params)
