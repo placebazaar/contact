@@ -26,6 +26,13 @@ describe 'add message through REST' do
       end
     end
 
+    it 'redirects to return url when set' do
+      return_url = 'https://example.com/return'
+      post '/messages', params.merge(return: return_url)
+      assert_response 302
+      assert_equal return_url, last_response.headers['Location']
+    end
+
     it 'validates that all fields are set' do
       assert_no_changes 'Mail::TestMailer.deliveries.length' do
         post '/messages', {}
