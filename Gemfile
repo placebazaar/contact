@@ -7,6 +7,7 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 gem 'foreman'
 gem 'pony'
 gem 'puma'
+gem 'semver'
 gem 'sinatra'
 
 group :development do
