@@ -40,3 +40,25 @@ set :pty, true
 # Uncomment the following to require manually verifying the host key before
 # first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+namespace :systemd do
+  desc 'Reload service'
+  task :reload do
+    on roles(:app) do
+      systemctl :reload
+    end
+  end
+
+  desc 'Show the status of service'
+  task :status do
+    on roles(:app) do
+      systemctl :status
+    end
+  end
+
+  def systemctl(action)
+    sudo :systemctl, action, "#{fetch(:application)}.service"
+  end
+end
+
+after 'deploy:publishing', 'systemd:reload'
