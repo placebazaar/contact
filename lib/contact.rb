@@ -15,7 +15,8 @@ error BadRequest do |error|
 end
 
 post '/messages' do
-  validate(params)
+  return status(201) if spam?
+  validate
   raise BadRequest, errors.join("\n") if errors.any?
 
   @name    = params['name']
@@ -25,15 +26,32 @@ post '/messages' do
   Pony.mail(reply_to: @email,
             subject: "[Contactform PlaceBazaar] #{@name}",
             body: erb(:mail_text))
-  status 201
+
+  if params['return']
+    redirect params['return']
+  else
+    status 201
+  end
 end
 
-def validate(params)
+def spam?
+  !params['contact_captcha'].nil?
+end
+
+def validate
   { email: 255, name: 255, message: 1000 }.each do |field, length|
     errors << "#{field} cannot be over #{length} characters" if
-                                        params[field.to_s].to_s.length > length
-    errors << "#{field} cannot be empty" if params[field].to_s.empty?
+                                                       too_long?(field, length)
+    errors << "#{field} cannot be empty" if empty?(field)
   end
+end
+
+def too_long?(field, length)
+  params[field.to_s].to_s.length > length
+end
+
+def empty?(field)
+  params[field].to_s.empty?
 end
 
 def errors
