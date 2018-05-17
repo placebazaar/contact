@@ -60,3 +60,5 @@ namespace :systemd do
     sudo :systemctl, action, "#{fetch(:application)}.service"
   end
 end
+
+after 'deploy:publishing', 'systemd:reload'
