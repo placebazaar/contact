@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TimeHelpers
   ##
   # Time Helper to freeze the time at die_wende for the duration of a block
