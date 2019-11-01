@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Contact.configure do |config|
   config.mail_to = ENV['MAIL_TO']
   config.mail_from = 'contact@placebazaar.org'
