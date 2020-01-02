@@ -4,7 +4,7 @@ Contact.configure do |config|
   config.mail_to = ENV['MAIL_TO']
   config.mail_from = 'contact@placebazaar.org'
   config.smtp_options = {
-    address:              'natalie.berk.es',
+    address:              'fairfax.webschuur.com',
     port:                 '587',
     enable_starttls_auto: true,
     user_name:            ENV['SMTP_USER'],
