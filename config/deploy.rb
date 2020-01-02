@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 # config valid for current version and patch releases of Capistrano
 lock '~> 3.10.2'
 
 set :application, 'placebazaar_contact'
-set :repo_url, 'git@github.com:placebazaar/contact.git'
+set :repo_url, 'ssh://gitea@git.webschuur.com:2222/placebazaar/contact.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
