@@ -2,6 +2,6 @@
 
 $LOAD_PATH << '.'
 
-require 'lib/contact.rb'
+require 'lib/contact'
 
 run Sinatra::Application

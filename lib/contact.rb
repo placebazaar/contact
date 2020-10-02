@@ -81,7 +81,7 @@ module Contact
   end
 end
 
-require_relative '../config/environment.rb'
+require_relative '../config/environment'
 
 Pony.options = {
   to: Contact.config.mail_to,
