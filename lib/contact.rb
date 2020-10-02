@@ -18,6 +18,7 @@ end
 
 post '/messages' do
   return status(201) if spam?
+
   validate
   raise BadRequest, errors.join("\n") if errors.any?
 

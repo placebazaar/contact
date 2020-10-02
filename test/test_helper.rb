@@ -17,7 +17,7 @@ ENV['RACK_ENV'] = 'test'
 Sinatra::Application.environment = :test
 
 ## Include all support files
-Dir[File.join(__dir__, 'support', '**', '*.rb')].each { |file| require file }
+Dir[File.join(__dir__, 'support', '**', '*.rb')].sort.each { |file| require file }
 
 module Minitest
   class Spec
